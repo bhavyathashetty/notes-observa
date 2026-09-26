@@ -9,6 +9,15 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@ai-sdk/google": "^4.0.80",
+    "@ai-sdk/otel": "^1.0.114",
+    "@arizeai/openinference-core": "^2.7.1",
+    "@arizeai/openinference-semantic-conventions": "^2.12.0",
+    "@arizeai/openinference-vercel": "^3.2.1",
+    "@opentelemetry/api": "^1.9.1",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.222.0",
+    "@vercel/otel": "^2.1.3",
+    "ai": "^7.0.114",
     "next": "16.3.6",
     "react": "19.2.8",
     "react-dom": "19.2.8"
