@@ -4,7 +4,7 @@ import { registerTelemetry } from "ai";
 
 import {
   isOpenInferenceSpan,
-  OpenInferenceSimpleSpanProcessor,
+  OpenInferenceBatchSpanProcessor,
 } from "@arizeai/openinference-vercel";
 
 import { OTLPTraceExporter } from "@opentelemetry/exporter-trace-otlp-proto";
@@ -62,7 +62,7 @@ export function registerArizeObservability() {
     },
 
     spanProcessors: [
-      new OpenInferenceSimpleSpanProcessor({
+      new OpenInferenceBatchSpanProcessor({
         exporter,
 
         spanFilter: isOpenInferenceSpan,
