@@ -7,6 +7,7 @@ const nextConfig: NextConfig = {
     "@arizeai/openinference-vercel",
     "@opentelemetry/exporter-trace-otlp-proto",
     "@vercel/otel",
+    "@google/adk",
   ],
 };
 

@@ -1,15 +1,42 @@
 export async function register() {
-  if (
-    process.env.NEXT_RUNTIME !== "nodejs" ||
-    (process.env.NODE_ENV === "development" &&
-      process.env.ARIZE_ENABLE_DEV_OBSERVABILITY !== "true")
-  ) {
+  console.log(
+    "========== INSTRUMENTATION STARTED =========="
+  );
+
+  console.log(
+    "[Instrumentation] Runtime:",
+    process.env.NEXT_RUNTIME
+  );
+
+  if (process.env.NEXT_RUNTIME !== "nodejs") {
     return;
   }
 
-  const { registerArizeObservability } = await import(
-    "./instrumentation-node"
+  console.log(
+    "[Instrumentation] Loading instrumentation-node.ts"
   );
 
-  registerArizeObservability();
+  try {
+    const module = await import("./instrumentation-node");
+
+    console.log(
+      "[Instrumentation] instrumentation-node.ts imported successfully"
+    );
+
+    console.log(
+      "[Instrumentation] Calling registerArizeObservability()"
+    );
+
+    module.registerArizeObservability();
+
+    console.log(
+      "[Instrumentation] registerArizeObservability() completed"
+    );
+  } catch (error) {
+    console.error(
+      "========== OBSERVABILITY INITIALIZATION FAILED =========="
+    );
+
+    console.error(error);
+  }
 }
